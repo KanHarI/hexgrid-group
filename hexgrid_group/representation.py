@@ -1,28 +1,10 @@
-import dataclasses
-
 from __future__ import annotations
 
+import dataclasses
 
-ROTATION_TO_L_TO_L = {
-    0: 1,
-    1: 0,
-    2: -1,
-    3: -1,
-    4: 0,
-    5: 1,
-}
-
-ROTATION_TO_L_TO_R = {
-    0: 0,
-    1: -1,
-    2: -1,
-    3: 0,
-    4: 1,
-    5: 1,
-}
-
+ROTATION_TO_L_TO_L = {0: 1, 1: 0, 2: -1, 3: -1, 4: 0, 5: 1}
+ROTATION_TO_L_TO_R = {0: 0, 1: -1, 2: -1, 3: 0, 4: 1, 5: 1}
 ROTATION_TO_R_TO_L = {0: 0, 1: 1, 2: 1, 3: 0, 4: -1, 5: -1}
-
 ROTATION_TO_R_TO_R = {0: 1, 1: 1, 2: 0, 3: -1, 4: -1, 5: 0}
 
 
@@ -30,10 +12,10 @@ ROTATION_TO_R_TO_R = {0: 1, 1: 1, 2: 0, 3: -1, 4: -1, 5: 0}
 class HexGroupRepresentation:
     """An additive group"""
 
-    L: int  # Left-and-up steps
-    R: int  # Right-and-up steps
-    C: int  # Rotation (0 to 5)
-    M: bool  # Mirror
+    L: int = 0  # Left-and-up steps
+    R: int = 0  # Right-and-up steps
+    C: int = 0  # Rotation (0 to 5)
+    M: bool = False  # Mirror
 
     def __add__(self, other: HexGroupRepresentation) -> HexGroupRepresentation:
         other_l_to_l = ROTATION_TO_L_TO_L[self.C]
